@@ -4,6 +4,9 @@ import { useEffect,useState } from 'react'
 import { Statistic } from 'semantic-ui-react'
 import VaccineCenterList from './VaccineCenterList'
 
+import moment from 'moment';
+
+import Moment from 'react-moment';
   function CovidSlotDashboard() {
 
     const [stateList,setstateList]= useState([])
@@ -14,12 +17,17 @@ import VaccineCenterList from './VaccineCenterList'
     const [distList,setDistList]= useState([])
     const [centerList,setCenterList]= useState([])
 
+    const today=moment().endOf('day').add(0,'days').format('YYYY-MM-DD')
+    const tomorrow=moment().endOf('day').add(1,'days').format('YYYY-MM-DD')
+    const dayAfterTomorrow=moment().endOf('day').add(2,'days').format('YYYY-MM-DD')
+
+    console.log("today"+today)
 
 
 
     useEffect(() => {
            
-axios.get("https://api.cowin.gov.in/api/v1/reports/v2/getPublicReports?state_id=&district_id=&date=2021-06-29").then(function(resp){
+axios.get(`https://api.cowin.gov.in/api/v1/reports/v2/getPublicReports?state_id=&district_id=&date=${today}`).then(function(resp){
     
 
 console.log(resp.data.getBeneficiariesGroupBy)
@@ -35,7 +43,7 @@ console.log(resp.data.getBeneficiariesGroupBy)
 
     useEffect(() => {
            
-        axios.get(`https://api.cowin.gov.in/api/v1/reports/v2/getPublicReports?state_id=${selectedState.stateId}&district_id=${selectedDist.distId}&date=2021-06-29`).then(function(resp){
+        axios.get(`https://api.cowin.gov.in/api/v1/reports/v2/getPublicReports?state_id=${selectedState.stateId}&district_id=${selectedDist.distId}&date=${today}`).then(function(resp){
             
          
         console.log(resp.data)
@@ -135,7 +143,7 @@ console.log(resp.data.getBeneficiariesGroupBy)
          dataToRender= <>
 
        
-       Showing Resuts for {selectedState.stateName}
+       Showing Resuts for {selectedState.stateName} {selectedDist.distName}
        <br></br>
       <StatisticExampleStatisticState></StatisticExampleStatisticState>
         
@@ -146,10 +154,7 @@ console.log(resp.data.getBeneficiariesGroupBy)
 
   
 
-
-  
-
-
+ 
   
 
     return (
@@ -181,8 +186,10 @@ Select Your State
  <br>
  </br>
  <VaccineCenterList data={selectedDist}></VaccineCenterList>
+ 
+             
 
-
+            
 </div>
 
 
