@@ -142,8 +142,8 @@ console.log(resp.data.getBeneficiariesGroupBy)
         console.log("state"+stateData)
          dataToRender= <>
 
-       
-       Showing Resuts for {selectedState.stateName} {selectedDist.distName}
+       <br></br>
+       Showing Resuts for <b>{selectedState.stateName} {selectedDist.distName}</b>
        <br></br>
       <StatisticExampleStatisticState></StatisticExampleStatisticState>
         
@@ -163,15 +163,15 @@ console.log(resp.data.getBeneficiariesGroupBy)
 <div>
 
 Select Your State
- <select onChange={getStateListChange}>
+ <select onChange={getStateListChange} style={{cursor:'pointer' }}>
      <option value="">All India</option>
 
 { itemsToRender}     
 
  </select>
-
+<span style={{margin:'10px'}}></span>
  Select Your City
- <select onChange={getDistListChange}>
+ <select onChange={getDistListChange} style={{cursor:'pointer' }}>
      <option value="">All District</option>
 
 { cityitemsToRender}     
