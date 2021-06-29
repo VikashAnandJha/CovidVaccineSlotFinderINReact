@@ -1,38 +1,64 @@
-.App {
+ body{
+    font-family: 'Josefin Sans', sans-serif;
+    padding: 10px;
+}
+
+*{
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.row {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin: 200px 40px;
+}
+
+.tile {
+  margin: 5px;
+  min-width: 200px;
+  height: 130px;
+  background-color: #9d0208;
+  color: white;
+  font-size: 20px;
+  transition: transform 500ms, opacity 500ms;
+  transform-origin: 50% 50%;
+  position: relative;
+}
+
+.overlay {
+  background-color: #9d0208;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 500ms;
+  position: absolute;
+  top: 0;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+svg {
+  width: 25%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.tile:hover {
+  transform: scale(1.5);
+}
+
+.tile:hover .overlay {
+  opacity: 1;
+}
+
+.shiftLeft {
+  transform: translateX(-50px);
+}
+
+.shiftRight {
+  transform: translateX(50px);
+}
+
+.darker {
+  opacity: 0.5;
 }
