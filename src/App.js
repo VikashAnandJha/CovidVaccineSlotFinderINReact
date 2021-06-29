@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
        <main role="main" className="container">
-<img src="img/logo.png"/>
+<img src="img/logo.png" style={{maxWidth:"220px"}}/>
  <h2>Covid19Vaccine Slots Tracker</h2>
 
   
